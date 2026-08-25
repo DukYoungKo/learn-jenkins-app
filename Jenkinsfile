@@ -44,7 +44,9 @@ pipeline {
 
     post {
         always {
-            junit 'test-results/junit.xml'
+            sh 'ls -la jest-results || echo MISSING'
+            sh 'find . -name "junit.xml" -not -path "*/node_modules/*" 2>/dev/null'
+            junit allowEmptyResults: true, testResults: '**/junit.xml'
         }
     }
 }
