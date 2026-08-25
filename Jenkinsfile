@@ -25,7 +25,8 @@ pipeline {
                 echo 'Test stage'
                 sh '''
                     test -f build/index.html
-                    npm test
+                    JEST_JUNIT_OUTPUT_DIR=jest-results JEST_JUNIT_OUTPUT_NAME=junit.xml npm test
+                    ls -la jest-results
                 '''
             }
         }
