@@ -1,3 +1,5 @@
+전킨스 파일인데
+들여쓰기 잘 맞는지 확인해줘
 pipeline {
     agent {
         docker {
@@ -40,6 +42,16 @@ pipeline {
                     npx playwright test --reporter=html
                 '''
             }
+            stage('Deploy') {
+            
+            steps {
+                sh '''
+                    // 버전 꼭 맞추기!
+                    npm install -g netlify-cli@20.1.1
+                    netlify --version
+                '''
+            }
+        }
         }
     }
 
