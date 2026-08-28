@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    environment {
+        NETLIFY_SITE_ID = 'c31c2be1-71cb-4c52-9421-7306043e861f'
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -38,6 +42,7 @@ pipeline {
                     node_modules/.bin/serve -s build & sleep 10
                     npx playwright test
                     npx playwright test --reporter=html
+                    echo "프로젝트 배포중.. 사이트아이디 : $NETLIFY_SITE_ID"
                 '''
             }
         }
