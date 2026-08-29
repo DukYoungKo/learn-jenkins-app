@@ -56,7 +56,7 @@ pipeline {
                     ./node_modules/.bin/netlify --version
                     echo "프로젝트 스테이징 배포중.. 사이트 아이디 : $NETLIFY_SITE_ID"
                     ./node_modules/.bin/netlify status
-                    ./node_modules/.bin/netlify deploy
+                    ./node_modules/.bin/netlify deploy --dir=build
                 '''
             }
         }
